@@ -1,0 +1,38 @@
+[
+  {
+    "question": "Who is known as the Father of the Indian Constitution?",
+    "options": [
+      "Jawaharlal Nehru",
+      "B. R. Ambedkar",
+      "Rajendra Prasad",
+      "Sardar Patel"
+    ],
+    "correct_option": 1,
+    "explanation": "Dr B. R. Ambedkar chaired the Drafting Committee of the Constituent Assembly.",
+    "id": "example-001"
+  },
+  {
+    "question": "Which is the longest river of India?",
+    "options": [
+      "Yamuna",
+      "Brahmaputra",
+      "Ganga",
+      "Godavari"
+    ],
+    "correct_option": 2,
+    "explanation": "The Ganga is the longest river flowing within India, at about 2,525 km.",
+    "id": "example-002"
+  },
+  {
+    "question": "Which vitamin is produced in the human skin in the presence of sunlight?",
+    "options": [
+      "Vitamin A",
+      "Vitamin B12",
+      "Vitamin C",
+      "Vitamin D"
+    ],
+    "correct_option": 3,
+    "explanation": "Vitamin D is synthesised in the skin when ultraviolet-B light converts 7-dehydrocholesterol.",
+    "id": "example-003"
+  }
+]
