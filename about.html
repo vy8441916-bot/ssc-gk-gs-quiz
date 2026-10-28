@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en-IN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About SSC GK GS Quiz &amp; Preparation</title>
+<meta name="description" content="About this free SSC GK and GS practice site: who it is for, how the question bank is maintained, how to report an error and how the questions are imported.">
+<link rel="canonical" href="https://vy8441916-bot.github.io/ssc-gk-gs-quiz/about.html">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#123a6b">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SSC GK GS Quiz &amp; Preparation">
+<meta property="og:locale" content="en_IN">
+<meta property="og:title" content="About SSC GK GS Quiz &amp; Preparation">
+<meta property="og:description" content="About this free SSC GK and GS practice site: who it is for, how the question bank is maintained, how to report an error and how the questions are imported.">
+<meta property="og:url" content="https://vy8441916-bot.github.io/ssc-gk-gs-quiz/about.html">
+<meta property="og:image" content="https://vy8441916-bot.github.io/ssc-gk-gs-quiz/assets/img/og-cover.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="About SSC GK GS Quiz &amp; Preparation">
+<meta name="twitter:description" content="About this free SSC GK and GS practice site: who it is for, how the question bank is maintained, how to report an error and how the questions are imported.">
+<meta name="twitter:image" content="https://vy8441916-bot.github.io/ssc-gk-gs-quiz/assets/img/og-cover.png">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/img/favicon.svg">
+<link rel="stylesheet" href="assets/css/style.css">
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://vy8441916-bot.github.io/ssc-gk-gs-quiz/index.html"}, {"@type": "ListItem", "position": 2, "name": "About", "item": "https://vy8441916-bot.github.io/ssc-gk-gs-quiz/about.html"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "AboutPage", "name": "About SSC GK GS Quiz & Preparation", "url": "https://vy8441916-bot.github.io/ssc-gk-gs-quiz/about.html", "about": {"@type": "EducationalOrganization", "name": "SSC GK GS Quiz & Preparation"}}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+<div class="wrap head-inner">
+<a class="brand" href="index.html">
+<span class="brand-mark" aria-hidden="true">SG</span>
+<span class="brand-text"><strong>SSC GK GS</strong><small>Quiz &amp; Preparation</small></span>
+</a>
+<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+<span class="nav-toggle-bars" aria-hidden="true"></span><span class="sr-only">Menu</span>
+</button>
+<nav id="site-nav" class="site-nav" aria-label="Main">
+<ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="subjects/index.html">Subjects</a></li><li><a href="exams/index.html">Exams</a></li><li><a href="practice.html">Practice</a></li><li><a href="about.html" class="is-active" aria-current="page">About</a></li>
+<li><a class="nav-cta" href="https://t.me/sscgkgs0" rel="noopener" target="_blank">Telegram</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<main id="main">
+<div class="wrap narrow">
+<nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="index.html">Home</a></li><li><span aria-current="page">About</span></li></ol></nav>
+<h1>About This SSC GK GS Practice Site</h1>
+<p class="page-lead">SSC GK GS Quiz &amp; Preparation is a free practice site for the General Awareness paper of SSC CGL, CHSL, CPO and MTS. It exists to make one thing easy: answering GK and GS questions, checking the answer and reading a short explanation that fixes the fact in memory.</p>
+
+<section class="section-sm" aria-labelledby="who-h">
+<h2 id="who-h">Who this is for</h2>
+<p>Aspirants preparing for SSC exams who want daily question practice without a login, an app install or a paid course. The content is also relevant to other competitive exams with a general awareness component, because the underlying syllabus overlaps heavily.</p>
+</section>
+
+<section class="section-sm" aria-labelledby="bank-h">
+<h2 id="bank-h">How the question bank is maintained</h2>
+<p>The site currently serves 23,654 multiple-choice questions across ten subjects. Each question carries four options, one correct answer and an explanation. The bank is kept as structured JSON files, one per subject, and is validated on every import: four options, a valid answer index, a non-empty explanation and no duplicate question text.</p>
+<p>Questions are compiled from standard SSC preparation material and organised by topic. They are practice material, not official question papers, and SSC does not endorse this site. If you find an answer that you believe is wrong, or an explanation that is unclear, report it on the Telegram channel with the question text — corrections are applied to the bank and appear in the next update.</p>
+</section>
+
+<section class="section-sm" aria-labelledby="import-h">
+<h2 id="import-h">Adding your own questions (JSON import)</h2>
+<p>If you maintain your own question bank, you can import it. The format is a JSON array of questions, one file per subject, and a small script in the project validates the file and rejects duplicates before merging it into the bank.</p>
+<pre class="code"><code>[
+  {
+    "question": "Who is known as the Father of the Indian Constitution?",
+    "options": ["Jawaharlal Nehru", "B. R. Ambedkar", "Rajendra Prasad", "Sardar Patel"],
+    "correct_option": 1,
+    "explanation": "Dr B. R. Ambedkar chaired the Drafting Committee of the Constituent Assembly."
+  }
+]</code></pre>
+<p>Full instructions, validation rules and the duplicate-checking workflow are on the <a href="docs/importing-questions.html">question import guide</a>.</p>
+</section>
+
+<section class="section-sm" aria-labelledby="privacy-h">
+<h2 id="privacy-h">Privacy and data</h2>
+<p>This is a static site. There is no account system, no cookie for tracking, no advertising network and no analytics script. Quiz answers stay in your browser's memory for the length of the session. The only outbound link that collects anything is the Telegram channel, which is governed by Telegram's own privacy policy.</p>
+</section>
+
+<section class="section-sm" aria-labelledby="contact-h">
+<h2 id="contact-h">Contact and corrections</h2>
+<p>The official Telegram channel is the only social profile for this brand at the moment: <a href="https://t.me/sscgkgs0" rel="noopener" target="_blank">t.me/sscgkgs0</a>. Use it for corrections, content requests and daily questions. Other social profiles may be added later and will be linked here when they exist.</p>
+<p class="fine">Site content last reviewed: 28 October 2026.</p>
+</section>
+</div>
+<section class="tg-band">
+<div class="wrap tg-inner">
+<div>
+<h2>Get one GK question set every day on Telegram</h2>
+<p>Daily GK and GS practice questions, answers and short explanations — free, no login.</p>
+</div>
+<a class="btn btn-tg btn-lg" href="https://t.me/sscgkgs0" rel="noopener" target="_blank">Join Our Telegram Channel</a>
+</div>
+</section></main>
+<footer class="site-foot">
+<div class="wrap foot-grid">
+<div class="foot-brand">
+<p class="foot-logo">SSC GK GS <span>Quiz &amp; Preparation</span></p>
+<p class="foot-note">Free GK and GS practice for SSC CGL, CHSL, CPO and MTS aspirants. 23,654 multiple-choice questions with answers and explanations, no login required.</p>
+<a class="btn btn-tg" href="https://t.me/sscgkgs0" rel="noopener" target="_blank">Join our Telegram channel</a>
+</div>
+<div>
+<h2 class="foot-h">Subjects</h2>
+<ul class="foot-links"><li><a href="subjects/history.html">History</a></li><li><a href="subjects/indian-polity.html">Indian Polity</a></li><li><a href="subjects/geography.html">Geography</a></li><li><a href="subjects/economy.html">Economy</a></li><li><a href="subjects/biology.html">Biology</a></li><li><a href="subjects/physics.html">Physics</a></li><li><a href="subjects/chemistry.html">Chemistry</a></li><li><a href="subjects/environment.html">Environment</a></li><li><a href="subjects/static-gk.html">Static GK</a></li><li><a href="subjects/miscellaneous-gk.html">Miscellaneous GK</a></li></ul>
+</div>
+<div>
+<h2 class="foot-h">Exams</h2>
+<ul class="foot-links"><li><a href="exams/ssc-cgl.html">SSC CGL GK</a></li><li><a href="exams/ssc-chsl.html">SSC CHSL GK</a></li><li><a href="exams/ssc-cpo.html">SSC CPO GK</a></li><li><a href="exams/ssc-mts.html">SSC MTS GK</a></li></ul>
+</div>
+<div>
+<h2 class="foot-h">Site</h2>
+<ul class="foot-links">
+<li><a href="practice.html">Practice quiz</a></li>
+<li><a href="subjects/index.html">All subjects</a></li>
+<li><a href="about.html">About &amp; corrections</a></li>
+<li><a href="docs/importing-questions.html">Import questions</a></li>
+<li><a href="sitemap.xml">Sitemap</a></li>
+</ul>
+</div>
+</div>
+<div class="wrap foot-base">
+<p>© <span data-year>2026</span> SSC GK GS Quiz &amp; Preparation. Educational content compiled for exam practice. Always cross-check facts with official sources before relying on them in an examination.</p>
+<p>Questions, corrections and feedback: <a href="https://t.me/sscgkgs0" rel="noopener" target="_blank">t.me/sscgkgs0</a></p>
+</div>
+</footer>
+<script src="assets/js/site.js" defer></script>
+<script src="assets/js/quiz.js" defer></script>
+</body>
+</html>
