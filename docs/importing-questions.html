@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en-IN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Import Questions from JSON – SSC GK GS Quiz &amp; Preparation</title>
+<meta name="description" content="Documented JSON format, validation rules and duplicate checking for importing your own GK and GS questions into the SSC GK GS practice site.">
+<link rel="canonical" href="https://vy8441916-bot.github.io/ssc-gk-gs-quiz/docs/importing-questions.html">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#123a6b">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SSC GK GS Quiz &amp; Preparation">
+<meta property="og:locale" content="en_IN">
+<meta property="og:title" content="Import Questions from JSON – SSC GK GS Quiz &amp; Preparation">
+<meta property="og:description" content="Documented JSON format, validation rules and duplicate checking for importing your own GK and GS questions into the SSC GK GS practice site.">
+<meta property="og:url" content="https://vy8441916-bot.github.io/ssc-gk-gs-quiz/docs/importing-questions.html">
+<meta property="og:image" content="https://vy8441916-bot.github.io/ssc-gk-gs-quiz/assets/img/og-cover.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Import Questions from JSON – SSC GK GS Quiz &amp; Preparation">
+<meta name="twitter:description" content="Documented JSON format, validation rules and duplicate checking for importing your own GK and GS questions into the SSC GK GS practice site.">
+<meta name="twitter:image" content="https://vy8441916-bot.github.io/ssc-gk-gs-quiz/assets/img/og-cover.png">
+<link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../assets/img/favicon.svg">
+<link rel="stylesheet" href="../assets/css/style.css">
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://vy8441916-bot.github.io/ssc-gk-gs-quiz/index.html"}, {"@type": "ListItem", "position": 2, "name": "Import questions", "item": "https://vy8441916-bot.github.io/ssc-gk-gs-quiz/docs/importing-questions.html"}]}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+<div class="wrap head-inner">
+<a class="brand" href="../index.html">
+<span class="brand-mark" aria-hidden="true">SG</span>
+<span class="brand-text"><strong>SSC GK GS</strong><small>Quiz &amp; Preparation</small></span>
+</a>
+<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+<span class="nav-toggle-bars" aria-hidden="true"></span><span class="sr-only">Menu</span>
+</button>
+<nav id="site-nav" class="site-nav" aria-label="Main">
+<ul>
+<li><a href="../index.html">Home</a></li>
+<li><a href="../subjects/index.html">Subjects</a></li><li><a href="../exams/index.html">Exams</a></li><li><a href="../practice.html">Practice</a></li><li><a href="../about.html" class="is-active" aria-current="page">About</a></li>
+<li><a class="nav-cta" href="https://t.me/sscgkgs0" rel="noopener" target="_blank">Telegram</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<main id="main">
+<div class="wrap narrow">
+<nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="../index.html">Home</a></li><li><span aria-current="page">Import questions</span></li></ol></nav>
+<h1>How to import your own questions from JSON</h1>
+<p class="page-lead">The practice questions on this site live in plain JSON files, one per subject. You can add your own questions by following the same format. The bundled import script validates every question and refuses duplicates, so a bad file cannot break the site.</p>
+
+<section class="section-sm" aria-labelledby="files-h">
+<h2 id="files-h">Where the data lives</h2>
+<div class="table-wrap">
+<table>
+<thead><tr><th scope="col">Path</th><th scope="col">Purpose</th></tr></thead>
+<tbody>
+<tr><td><code>data/bank/&lt;subject&gt;.json</code></td><td>One file per subject. This is what a subject page's practice set loads.</td></tr>
+<tr><td><code>data/bank/index.json</code></td><td>Generated question counts used by the pages.</td></tr>
+<tr><td><code>data/pool/mixed.json</code></td><td>Mixed pool used on the homepage.</td></tr>
+<tr><td><code>data/pool/ssc-cgl.json</code> and siblings</td><td>Exam-weighted pools for the four exam pages.</td></tr>
+<tr><td><code>scripts/import_questions.py</code></td><td>Validator and merger. Standard library only.</td></tr>
+</tbody></table>
+</div>
+</section>
+
+<section class="section-sm" aria-labelledby="schema-h">
+<h2 id="schema-h">Question format</h2>
+<p>Input files are a JSON array of objects. Only five fields matter; extra fields such as <code>id</code>, <code>topic</code> or <code>source</code> are allowed and preserved by the validator's report.</p>
+<pre class="code"><code>{
+  "question": "Which article of the Constitution abolishes untouchability?",
+  "options": ["Article 14", "Article 15", "Article 17", "Article 21"],
+  "correct_option": 2,
+  "explanation": "Article 17 abolishes untouchability and forbids its practice in any form."
+}</code></pre>
+<ul class="checklist">
+<li><code>question</code> — at least 12 characters, plain text, no HTML.</li>
+<li><code>options</code> — exactly four non-empty strings, all different.</li>
+<li><code>correct_option</code> — an integer from 0 to 3, where 0 is the first option.</li>
+<li><code>explanation</code> — at least 12 characters. This is what makes the question useful.</li>
+</ul>
+<p>Files served to the browser use a compact array form to keep pages fast: <code>["question", ["a","b","c","d"], 2, "explanation", "optional-id"]</code>. The import script converts your object format into that array form, so you never have to write it by hand.</p>
+</section>
+
+<section class="section-sm" aria-labelledby="steps-h">
+<h2 id="steps-h">Import in four steps</h2>
+<ol class="steps">
+<li><strong>Prepare the file.</strong> Save your questions as <code>my-questions.json</code> in the object format above.</li>
+<li><strong>Validate without changing anything.</strong> Run <code>python3 scripts/import_questions.py my-questions.json --subject indian-polity --dry-run</code>. The script reports valid questions, rejected questions with reasons, and duplicates against the existing bank.</li>
+<li><strong>Merge.</strong> Remove <code>--dry-run</code> to write the merged file into <code>data/bank/indian-polity.json</code>. The script keeps a backup of the previous file.</li>
+<li><strong>Refresh counts and publish.</strong> Run <code>python3 build_data.py</code> if you use the bundled pipeline, then commit and push. The counts on the pages update from <code>index.json</code>.</li>
+</ol>
+</section>
+
+<section class="section-sm" aria-labelledby="dupe-h">
+<h2 id="dupe-h">Duplicate validation</h2>
+<p>Duplicates are detected on the normalised question text: lower-cased, punctuation removed and whitespace collapsed. That catches the common case where the same question appears twice with different spacing or a changed question mark. The validator also flags questions whose four options are identical to an existing question, which usually means a re-typed copy with an edited stem.</p>
+<p>Nothing is silently dropped: every rejected or skipped question is listed in the report with its index and the reason, so you can fix and re-run.</p>
+</section>
+
+<section class="section-sm" aria-labelledby="safety-h">
+<h2 id="safety-h">Keeping your source data safe</h2>
+<p>Never commit access tokens, private repository URLs or credentials to a public site. If your question bank lives in a private repository, export it to JSON on your own machine, run the validator locally, and commit only the resulting <code>data/bank/*.json</code> files. The site needs no GitHub token at runtime because it is entirely static — the browser only fetches public JSON.</p>
+</section>
+</div>
+<section class="tg-band">
+<div class="wrap tg-inner">
+<div>
+<h2>Get one GK question set every day on Telegram</h2>
+<p>Daily GK and GS practice questions, answers and short explanations — free, no login.</p>
+</div>
+<a class="btn btn-tg btn-lg" href="https://t.me/sscgkgs0" rel="noopener" target="_blank">Join Our Telegram Channel</a>
+</div>
+</section></main>
+<footer class="site-foot">
+<div class="wrap foot-grid">
+<div class="foot-brand">
+<p class="foot-logo">SSC GK GS <span>Quiz &amp; Preparation</span></p>
+<p class="foot-note">Free GK and GS practice for SSC CGL, CHSL, CPO and MTS aspirants. 23,654 multiple-choice questions with answers and explanations, no login required.</p>
+<a class="btn btn-tg" href="https://t.me/sscgkgs0" rel="noopener" target="_blank">Join our Telegram channel</a>
+</div>
+<div>
+<h2 class="foot-h">Subjects</h2>
+<ul class="foot-links"><li><a href="../subjects/history.html">History</a></li><li><a href="../subjects/indian-polity.html">Indian Polity</a></li><li><a href="../subjects/geography.html">Geography</a></li><li><a href="../subjects/economy.html">Economy</a></li><li><a href="../subjects/biology.html">Biology</a></li><li><a href="../subjects/physics.html">Physics</a></li><li><a href="../subjects/chemistry.html">Chemistry</a></li><li><a href="../subjects/environment.html">Environment</a></li><li><a href="../subjects/static-gk.html">Static GK</a></li><li><a href="../subjects/miscellaneous-gk.html">Miscellaneous GK</a></li></ul>
+</div>
+<div>
+<h2 class="foot-h">Exams</h2>
+<ul class="foot-links"><li><a href="../exams/ssc-cgl.html">SSC CGL GK</a></li><li><a href="../exams/ssc-chsl.html">SSC CHSL GK</a></li><li><a href="../exams/ssc-cpo.html">SSC CPO GK</a></li><li><a href="../exams/ssc-mts.html">SSC MTS GK</a></li></ul>
+</div>
+<div>
+<h2 class="foot-h">Site</h2>
+<ul class="foot-links">
+<li><a href="../practice.html">Practice quiz</a></li>
+<li><a href="../subjects/index.html">All subjects</a></li>
+<li><a href="../about.html">About &amp; corrections</a></li>
+<li><a href="importing-questions.html">Import questions</a></li>
+<li><a href="../sitemap.xml">Sitemap</a></li>
+</ul>
+</div>
+</div>
+<div class="wrap foot-base">
+<p>© <span data-year>2026</span> SSC GK GS Quiz &amp; Preparation. Educational content compiled for exam practice. Always cross-check facts with official sources before relying on them in an examination.</p>
+<p>Questions, corrections and feedback: <a href="https://t.me/sscgkgs0" rel="noopener" target="_blank">t.me/sscgkgs0</a></p>
+</div>
+</footer>
+<script src="../assets/js/site.js" defer></script>
+<script src="../assets/js/quiz.js" defer></script>
+</body>
+</html>
