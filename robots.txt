@@ -1,0 +1,6 @@
+# robots.txt for SSC GK GS Quiz & Preparation
+User-agent: *
+Allow: /
+Disallow: /data/
+
+Sitemap: https://vy8441916-bot.github.io/ssc-gk-gs-quiz/sitemap.xml
